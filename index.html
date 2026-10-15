@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Статический прототип рейтинга видимости DSP-платформ в ответах ИИ">
+  <title>Рейтинг видимости DSP-платформ в ответах ИИ 2026</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iOCIgZmlsbD0iI2MxMzIxYSIvPgogIDxwYXRoIGQ9Ik0xNSA0NyAyOCAxNWg4bDEzIDMyaC05bC0yLjUtN0gyNkwyMy41IDQ3Wm0xMy40LTE0aDYuN2wtMy4zLTkuN1oiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+  <style>
+:root {
+  color-scheme: light;
+  font-family: Rubik, Arial, Helvetica, sans-serif;
+  color: rgb(58, 60, 77);
+  background: rgb(253, 253, 253);
+  font-synthesis: none;
+  --ink: rgb(58, 60, 77);
+  --muted: rgb(125, 130, 149);
+  --warm: rgb(194, 180, 160);
+  --red: rgb(193, 50, 26);
+  --line: rgb(236, 237, 242);
+  --paper: rgb(253, 253, 253);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--paper);
+  font-size: 16px;
+  line-height: 1.666;
+}
+button, input { font: inherit; }
+a { color: inherit; }
+
+.site-header {
+  height: 155px;
+  padding: 0 15px;
+  background: #fff;
+}
+.logo-row {
+  height: 115px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.logo-link { display: block; line-height: 0; }
+.logo { display: block; width: 282px; height: auto; }
+.search-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a7acbc;
+  font-size: 14px;
+}
+.search-label svg { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.menu-button {
+  display: none;
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  padding: 9px 7px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.menu-button span {
+  display: block;
+  height: 2px;
+  margin: 5px 0;
+  background: var(--warm);
+}
+.global-nav {
+  height: 40px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+}
+.global-nav a {
+  color: #111;
+  text-decoration: none;
+  transition: color .15s ease;
+}
+.global-nav a:hover, .global-nav a:focus-visible { color: var(--red); }
+.global-nav .nav-accent { color: var(--red); }
+
+main {
+  max-width: 1920px;
+  min-height: 1060px;
+  padding: 29px 15px 80px;
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.breadcrumbs a { text-decoration: none; }
+h1 {
+  max-width: 930px;
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.content-column { width: calc(100vw - 472px); }
+
+.primary-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 38px;
+}
+.primary-tabs button {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 5px 15px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-size: 18px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .04);
+}
+.tab-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  flex: 0 0 28px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 13px;
+}
+.primary-tabs button.active {
+  position: relative;
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+.primary-tabs button.active::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 8px);
+  bottom: -9px;
+  border-width: 9px 9px 0;
+  border-style: solid;
+  border-color: var(--red) transparent transparent;
+}
+.primary-tabs button:focus-visible, .choice-nav button:focus-visible, .menu-button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.view-panel[hidden] { display: none; }
+.category-nav {
+  display: flex;
+  min-height: 48px;
+  margin: 0 -15px 29px;
+  color: var(--muted);
+}
+.category-nav span {
+  padding: 9px 17px 10px;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+}
+.category-nav span.active { border-bottom-color: var(--red); color: var(--red); }
+h2 { margin: 0 0 10px; font-size: 24px; line-height: 1.33; }
+.choice-nav {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 -15px 26px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.choice-nav button {
+  min-height: 48px;
+  flex: 0 0 auto;
+  padding: 9px 17px 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.choice-nav button.active { border-bottom-color: var(--red); color: var(--red); }
+
+.chart-slot {
+  margin: 0 0 31px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.chart-heading {
+  min-height: 61px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px;
+  border-bottom: 1px solid var(--line);
+}
+.chart-heading h3 { margin: 0; font-size: 20px; line-height: 1.3; }
+.chart-heading span { color: var(--muted); font-size: 14px; }
+.chart-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.chart-stage {
+  width: 100%;
+  min-width: 760px;
+  background: #fff;
+}
+.chart-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.chart-grid-line { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.chart-axis-line { stroke: #b9bdc9; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.chart-axis-label {
+  fill: var(--muted);
+  font-family: Rubik, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+.chart-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+  vector-effect: non-scaling-stroke;
+}
+.chart-point {
+  stroke: #fff;
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
+.chart-point-hit {
+  fill: transparent;
+  stroke: none;
+  pointer-events: all;
+  cursor: crosshair;
+}
+.chart-series[hidden] {
+  display: none;
+}
+.chart-tooltip {
+  position: fixed;
+  z-index: 1000;
+  width: max-content;
+  max-width: calc(100vw - 16px);
+  padding: 9px 11px 10px;
+  border: 1px solid #4a4c59;
+  background: #373945;
+  box-shadow: 0 5px 16px rgba(32, 34, 43, 0.2);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+.chart-tooltip[hidden] {
+  display: none;
+}
+.chart-tooltip-platform,
+.chart-tooltip-month,
+.chart-tooltip-value {
+  display: block;
+}
+.chart-tooltip-platform {
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+.chart-tooltip-month {
+  color: #d9dbe3;
+}
+.chart-tooltip-value {
+  margin-top: 4px;
+}
+.chart-legend {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px 16px;
+  padding: 14px 15px 16px;
+  border-top: 1px solid var(--line);
+}
+.legend-item {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: var(--legend-color);
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+.legend-item[aria-pressed="false"] {
+  color: #a7acbc;
+}
+.legend-swatch {
+  width: 18px;
+  height: 3px;
+  flex: 0 0 18px;
+  border-radius: 3px;
+  background: currentColor;
+}
+.legend-show-all {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 1px;
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: var(--red);
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.legend-item:focus-visible,
+.legend-show-all:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.ranking-title {
+  max-width: 760px;
+  margin: 0 0 15px;
+  font-size: 29px;
+  line-height: 1.08;
+}
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  min-width: 620px;
+  border: 1px solid var(--line);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  font-size: 16px;
+  line-height: 20px;
+}
+th {
+  height: 61px;
+  padding: 15px;
+  background: var(--ink);
+  color: var(--warm);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+}
+th:nth-child(3), th:nth-child(4) { text-align: right; }
+td {
+  min-height: 51px;
+  padding: 15px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+}
+tbody tr:last-child td { border-bottom: 0; }
+td:nth-child(2), th:nth-child(2) { min-width: 220px; text-align: left; }
+.rank { width: 66px; color: var(--warm); text-align: left; }
+.platform { color: var(--ink); font-weight: 500; }
+.total { font-variant-numeric: tabular-nums; font-weight: 700; }
+.delta-up { color: #3f7e52; font-weight: 500; }
+.delta-down { color: var(--red); font-weight: 500; }
+.delta-neutral { color: var(--muted); }
+.data-note { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+.text-section {
+  max-width: 850px;
+  min-height: 610px;
+  padding-top: 4px;
+}
+.text-section h2 { margin-bottom: 20px; }
+.text-section h3 { margin: 32px 0 8px; font-size: 20px; }
+.text-section p, .text-section li { max-width: 800px; }
+.text-section ul { padding-left: 22px; }
+.text-section li + li { margin-top: 9px; }
+
+footer {
+  min-height: 430px;
+  padding: 58px 15px 35px;
+  background: #fff;
+  color: #111;
+}
+.footer-grid {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 50px;
+}
+.footer-grid b { font-size: 18px; }
+.footer-grid a, .footer-grid p {
+  display: block;
+  margin: 11px 0 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.footer-grid a:hover, .footer-grid a:focus-visible { color: var(--red); }
+.footer-brand img { width: 146px; height: auto; }
+.copyright {
+  margin-top: 55px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: #777;
+  font-size: 13px;
+}
+
+@media (max-width: 1199px) {
+  .site-header { height: 62px; border-bottom: 1px solid var(--warm); }
+  .logo-row { height: 62px; grid-template-columns: 1fr auto; border: 0; }
+  .logo-link { grid-column: 1; justify-self: start; }
+  .logo { width: 145px; }
+  .search-label { display: none; }
+  .menu-button { display: block; grid-column: 2; grid-row: 1; }
+  .global-nav {
+    position: absolute;
+    z-index: 5;
+    top: 62px;
+    left: 0;
+    right: 0;
+    height: auto;
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 15px 18px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+  }
+  .global-nav.open { display: grid; }
+  .content-column { width: 100%; }
+  main { min-height: 1000px; padding-top: 0; }
+}
+
+@media (max-width: 600px) {
+  main { padding-top: 0; padding-bottom: 55px; }
+  .breadcrumbs {
+    margin-bottom: 8px;
+    overflow: hidden;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  h1 { margin-bottom: 19px; font-size: 22px; line-height: 28.6px; }
+  .primary-tabs { display: block; margin-bottom: 24px; }
+  .primary-tabs button { width: 100%; height: 40px; }
+  .primary-tabs button + button { margin-top: 8px; }
+  .primary-tabs button.active::after { display: none; }
+  .category-nav { margin-bottom: 24px; }
+  .category-nav span { min-height: 44px; padding: 8px 17px 9px; font-size: 14px; }
+  h2 { font-size: 20px; line-height: 26.6px; }
+  .choice-nav { margin: 0 -15px 24px; }
+  .choice-nav button { min-height: 44px; padding: 8px 17px 9px; font-size: 14px; }
+  .chart-slot { margin-bottom: 25px; }
+  .chart-heading { min-height: 56px; display: block; padding: 12px; }
+  .chart-heading h3 { font-size: 18px; }
+  .chart-heading span { display: block; margin-top: 2px; font-size: 12px; }
+  .chart-stage { min-width: 720px; }
+  .chart-legend { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 12px; padding: 12px; }
+  .legend-item { font-size: 11px; }
+  .ranking-title { margin-top: 4px; font-size: 27px; line-height: 1.13; }
+  table { min-width: 600px; font-size: 14px; line-height: 17.5px; }
+  th { height: 51px; padding: 8px; }
+  td { padding: 10px 8px; }
+  .data-note { font-size: 12px; }
+  .text-section { min-height: 540px; }
+  footer { min-height: 760px; padding-top: 42px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-row">
+      <span class="search-label" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+        Поиск
+      </span>
+      <a class="logo-link" href="#top" aria-label="AdIndex — на главную">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODIgNzIiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJ0aXRsZSI+CiAgPHRpdGxlIGlkPSJ0aXRsZSI+QWRJbmRleDwvdGl0bGU+CiAgPHRleHQgeD0iMTQxIiB5PSI1NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2MxMzIxYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjUiIGZvbnQtd2VpZ2h0PSI3MDAiIGxldHRlci1zcGFjaW5nPSItNSI+QWRJbmRleDwvdGV4dD4KPC9zdmc+Cg==" alt="AdIndex" class="logo">
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="global-navigation" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="global-nav" id="global-navigation" aria-label="Основная навигация">
+      <a href="#top">Главное</a>
+      <a href="#rating">Рейтинги</a>
+      <a href="#footer">Каталог</a>
+      <a href="#footer">Кейсы</a>
+      <a class="nav-accent" href="#footer">AdIndex ТВ</a>
+      <a href="#footer">Ещё</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="#top">Главная</a><span>/</span><a href="#rating">Рейтинги</a><span>/</span><span>Диджитал</span>
+    </div>
+
+    <h1>Рейтинг видимости DSP-платформ в ответах ИИ 2026</h1>
+
+    <div class="content-column">
+      <nav class="primary-tabs" aria-label="Разделы рейтинга">
+        <button class="active" type="button" data-view="rating" aria-selected="true">
+          <span class="tab-icon" aria-hidden="true">↗</span><span>Рейтинг</span>
+        </button>
+        <button type="button" data-view="methodology" aria-selected="false">
+          <span class="tab-icon" aria-hidden="true">↔</span><span>Методология</span>
+        </button>
+        <button type="button" data-view="about" aria-selected="false">
+          <span class="tab-icon" aria-hidden="true">ⓘ</span><span>О рейтинге</span>
+        </button>
+      </nav>
+
+      <section class="view-panel active" id="rating" data-panel="rating">
+        <div class="category-nav" aria-label="Категория рейтинга">
+          <span class="active">DSP-платформы</span>
+        </div>
+        <h2>DSP-платформы</h2>
+
+        <nav class="choice-nav metrics" aria-label="Показатели рейтинга">
+          <button class="active" type="button" data-metric="integral" aria-pressed="true">Интегральный рейтинг</button>
+          <button type="button" data-metric="answers" aria-pressed="false">Упоминания в ответах ИИ</button>
+          <button type="button" data-metric="sources" aria-pressed="false">Упоминания в источниках</button>
+        </nav>
+
+        <section class="chart-slot" aria-labelledby="chart-title">
+          <div class="chart-heading">
+            <h3 id="chart-title">Динамика видимости</h3>
+            <span>Январь — октябрь 2026</span>
+          </div>
+          <div class="chart-scroll" tabindex="0" aria-label="График доступен с горизонтальной прокруткой">
+            <div class="chart-stage" id="visibility-chart"></div>
+          </div>
+          <div class="chart-legend" id="chart-legend" aria-label="Легенда графика"></div>
+        </section>
+
+        <h3 class="ranking-title" id="ranking-title">Интегральный рейтинг DSP-платформ</h3>
+        <div class="table-scroll" tabindex="0" aria-label="Таблица рейтинга, доступна горизонтальная прокрутка">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Место</th>
+                <th scope="col">DSP-платформа</th>
+                <th scope="col" id="value-heading">Индекс видимости</th>
+                <th scope="col">Изменение<br>позиции</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="view-panel text-section" id="methodology" data-panel="methodology" hidden>
+        <h2>Методология рейтинга</h2>
+        <p>Прототип модели сопоставляет видимость DSP-платформ в ответах ИИ и в источниках, на которые опираются ответы. Представленные значения синтетические и показывают только логику будущего интерфейса.</p>
+        <h3>Показатели</h3>
+        <ul>
+          <li><b>Интегральный рейтинг</b> — сводный индекс двух показателей видимости.</li>
+          <li><b>Упоминания в ответах ИИ</b> — частота появления платформы непосредственно в ответах.</li>
+          <li><b>Упоминания в источниках</b> — частота появления платформы в материалах, указанных среди источников ответа.</li>
+        </ul>
+        <p>Порядок компаний пересчитывается отдельно для каждого показателя. Методика и веса показателей будут уточняться до запуска исследования.</p>
+      </section>
+
+      <section class="view-panel text-section" id="about" data-panel="about" hidden>
+        <h2>О рейтинге</h2>
+        <p>Рейтинг задуман как инструмент сравнения видимости DSP-платформ в среде генеративного поиска. Модель предусматривает оценку по пяти системам: ChatGPT, Алиса, Perplexity, Google AI и DeepSeek.</p>
+        <p>Отдельные фильтры по системам в прототипе не предусмотрены: таблица показывает сводное представление. Текущая версия не является результатом реального исследования.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODIgNzIiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJ0aXRsZSI+CiAgPHRpdGxlIGlkPSJ0aXRsZSI+QWRJbmRleDwvdGl0bGU+CiAgPHRleHQgeD0iMTQxIiB5PSI1NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2MxMzIxYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjUiIGZvbnQtd2VpZ2h0PSI3MDAiIGxldHRlci1zcGFjaW5nPSItNSI+QWRJbmRleDwvdGV4dD4KPC9zdmc+Cg==" alt="AdIndex">
+        <p>Рейтинги рекламного рынка</p>
+      </div>
+      <div><b>Меню</b><a href="#top">Новости</a><a href="#rating">Рейтинги</a><a href="#footer">Каталог</a></div>
+      <div><b>Наши продукты</b><a href="#footer">Публикации</a><a href="#footer">Исследования</a><a href="#footer">Спецпроекты</a></div>
+      <div><b>Мы на связи</b><a href="#footer">Контакты</a></div>
+    </div>
+    <div class="copyright">© Сетевое издание AdIndex.ru 2026</div>
+  </footer>
+
+  <script>
+(function () {
+  'use strict';
+
+  const EXPECTED_COMPANIES = [
+    'Hybrid', 'MediaSniper', 'Programmatica.com', 'One Target', 'Otclick',
+    'Bidease', 'Getintent', 'Yabbi (T2 AdTech)', 'Go Tech', 'Adspend'
+  ];
+
+  const INTEGRAL_WEIGHTS = Object.freeze({ answers: 0.5, sources: 0.5 });
+
+  const trendData = {
+    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь'],
+    companies: [
+      {
+        name: 'Hybrid', color: '#c1321a',
+        values: {
+          answers: [67, 69, 71, 70, 72, 74, 73, 75, 77, 76],
+          sources: [72, 71, 73, 75, 74, 76, 78, 77, 79, 81]
+        }
+      },
+      {
+        name: 'MediaSniper', color: '#2f6fb0',
+        values: {
+          answers: [73, 72, 74, 76, 75, 77, 79, 78, 80, 82],
+          sources: [66, 68, 69, 67, 70, 72, 71, 73, 75, 74]
+        }
+      },
+      {
+        name: 'Programmatica.com', color: '#39855a',
+        values: {
+          answers: [64, 66, 65, 67, 69, 68, 70, 72, 71, 74],
+          sources: [78, 77, 76, 75, 74, 76, 75, 77, 78, 80]
+        }
+      },
+      {
+        name: 'One Target', color: '#d27a20',
+        values: {
+          answers: [70, 71, 69, 68, 70, 72, 74, 76, 75, 78],
+          sources: [62, 64, 66, 68, 69, 67, 70, 73, 76, 77]
+        }
+      },
+      {
+        name: 'Otclick', color: '#7c5aa6',
+        values: {
+          answers: [58, 60, 63, 65, 64, 66, 68, 67, 70, 72],
+          sources: [70, 69, 68, 67, 69, 71, 70, 72, 72, 75]
+        }
+      },
+      {
+        name: 'Bidease', color: '#008b8b',
+        values: {
+          answers: [76, 75, 73, 74, 72, 71, 73, 75, 78, 79],
+          sources: [60, 62, 64, 65, 67, 69, 71, 70, 70, 73]
+        }
+      },
+      {
+        name: 'Getintent', color: '#d45b8c',
+        values: {
+          answers: [69, 67, 68, 70, 72, 74, 76, 74, 74, 75],
+          sources: [74, 75, 73, 72, 71, 70, 72, 74, 77, 78]
+        }
+      },
+      {
+        name: 'Yabbi (T2 AdTech)', color: '#35516f',
+        values: {
+          answers: [61, 63, 62, 64, 66, 65, 67, 69, 72, 71],
+          sources: [58, 60, 62, 64, 63, 65, 67, 69, 68, 70]
+        }
+      },
+      {
+        name: 'Go Tech', color: '#84942f',
+        values: {
+          answers: [55, 57, 59, 58, 60, 62, 64, 66, 65, 68],
+          sources: [65, 64, 63, 66, 68, 67, 69, 71, 73, 72]
+        }
+      },
+      {
+        name: 'Adspend', color: '#8a5a44',
+        values: {
+          answers: [62, 61, 60, 62, 64, 63, 65, 67, 66, 69],
+          sources: [55, 57, 59, 58, 60, 62, 64, 63, 66, 68]
+        }
+      }
+    ]
+  };
+
+  const metrics = {
+    integral: { title: 'Интегральный рейтинг DSP-платформ', valueLabel: 'Индекс видимости', decimals: 1 },
+    answers: { title: 'Упоминания DSP-платформ в ответах ИИ', valueLabel: 'Упоминания в ответах', decimals: 0 },
+    sources: { title: 'Упоминания DSP-платформ в источниках', valueLabel: 'Упоминания в источниках', decimals: 0 }
+  };
+
+  window.adIndexGeoData = { metrics: metrics, trend: trendData, integralWeights: INTEGRAL_WEIGHTS };
+
+  const rankingBody = document.getElementById('ranking-body');
+  const rankingTitle = document.getElementById('ranking-title');
+  const valueHeading = document.getElementById('value-heading');
+  const chartStage = document.getElementById('visibility-chart');
+  const chartLegend = document.getElementById('chart-legend');
+  const metricButtons = Array.from(document.querySelectorAll('[data-metric]'));
+  const viewButtons = Array.from(document.querySelectorAll('[data-view]'));
+  const viewPanels = Array.from(document.querySelectorAll('[data-panel]'));
+  const menuButton = document.querySelector('.menu-button');
+  const globalNav = document.querySelector('.global-nav');
+  const visibleCompanies = new Set(EXPECTED_COMPANIES);
+  const chartTooltip = document.createElement('div');
+  chartTooltip.className = 'chart-tooltip';
+  chartTooltip.id = 'chart-tooltip';
+  chartTooltip.setAttribute('role', 'tooltip');
+  chartTooltip.hidden = true;
+  document.body.appendChild(chartTooltip);
+
+  function deltaMarkup(delta) {
+    if (delta > 0) return '<span class="delta-up">↑ ' + delta + '</span>';
+    if (delta < 0) return '<span class="delta-down">↓ ' + Math.abs(delta) + '</span>';
+    return '<span class="delta-neutral">—</span>';
+  }
+
+  function getSeries(company, metricId) {
+    if (metricId !== 'integral') return company.values[metricId];
+    return company.values.answers.map(function (answerValue, index) {
+      const value = (answerValue * INTEGRAL_WEIGHTS.answers) +
+        (company.values.sources[index] * INTEGRAL_WEIGHTS.sources);
+      return Number(value.toFixed(1));
+    });
+  }
+
+  function getRanking(metricId, monthIndex) {
+    return trendData.companies.map(function (company) {
+      return { company: company, value: getSeries(company, metricId)[monthIndex] };
+    }).sort(function (a, b) {
+      return (b.value - a.value) || a.company.name.localeCompare(b.company.name, 'ru');
+    });
+  }
+
+  function getMetricRows(metricId) {
+    const octoberIndex = trendData.months.length - 1;
+    const septemberRanking = getRanking(metricId, octoberIndex - 1);
+    const septemberPositions = new Map(septemberRanking.map(function (entry, index) {
+      return [entry.company.name, index + 1];
+    }));
+
+    return getRanking(metricId, octoberIndex).map(function (entry, index) {
+      const octoberPosition = index + 1;
+      return {
+        name: entry.company.name,
+        value: entry.value,
+        septemberPosition: septemberPositions.get(entry.company.name),
+        octoberPosition: octoberPosition,
+        delta: septemberPositions.get(entry.company.name) - octoberPosition
+      };
+    });
+  }
+
+  function createSvgElement(name, attributes) {
+    const element = document.createElementNS('http://www.w3.org/2000/svg', name);
+    Object.keys(attributes || {}).forEach(function (key) {
+      element.setAttribute(key, attributes[key]);
+    });
+    return element;
+  }
+
+  function hideTooltip() {
+    chartTooltip.hidden = true;
+    chartTooltip.removeAttribute('data-platform');
+  }
+
+  function positionTooltip(point) {
+    const pointRect = point.getBoundingClientRect();
+    const tooltipRect = chartTooltip.getBoundingClientRect();
+    const gap = 12;
+    const edge = 8;
+    let left = pointRect.right + gap;
+    let top = pointRect.top + (pointRect.height - tooltipRect.height) / 2;
+
+    if (left + tooltipRect.width > window.innerWidth - edge) {
+      left = pointRect.left - tooltipRect.width - gap;
+    }
+    left = Math.max(edge, Math.min(left, window.innerWidth - tooltipRect.width - edge));
+    top = Math.max(edge, Math.min(top, window.innerHeight - tooltipRect.height - edge));
+
+    chartTooltip.style.left = left + 'px';
+    chartTooltip.style.top = top + 'px';
+  }
+
+  function showTooltip(point) {
+    const metric = metrics[point.dataset.metric];
+    chartTooltip.replaceChildren();
+
+    const platform = document.createElement('strong');
+    platform.className = 'chart-tooltip-platform';
+    platform.textContent = point.dataset.platform;
+
+    const month = document.createElement('span');
+    month.className = 'chart-tooltip-month';
+    month.textContent = point.dataset.month + ' 2026';
+
+    const value = document.createElement('span');
+    value.className = 'chart-tooltip-value';
+    value.textContent = metric.valueLabel + ': ' + Number(point.dataset.value).toFixed(metric.decimals);
+
+    chartTooltip.append(platform, month, value);
+    chartTooltip.dataset.platform = point.dataset.platform;
+    chartTooltip.hidden = false;
+    positionTooltip(point);
+  }
+
+  function getClosestVisiblePoint(clientX, clientY) {
+    let closestPoint = null;
+    let closestDistance = Infinity;
+
+    chartStage.querySelectorAll('.chart-point-hit').forEach(function (point) {
+      if (point.closest('.chart-series').hasAttribute('hidden')) return;
+      const rect = point.getBoundingClientRect();
+      const distance = Math.hypot(
+        clientX - (rect.left + rect.width / 2),
+        clientY - (rect.top + rect.height / 2)
+      );
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestPoint = point;
+      }
+    });
+
+    return closestDistance <= 14 ? closestPoint : null;
+  }
+
+  function renderChart(metricId) {
+    hideTooltip();
+    const width = 920;
+    const height = 350;
+    const margin = { top: 18, right: 20, bottom: 46, left: 52 };
+    const plotWidth = width - margin.left - margin.right;
+    const plotHeight = height - margin.top - margin.bottom;
+    const allValues = trendData.companies.reduce(function (values, company) {
+      return values.concat(getSeries(company, metricId));
+    }, []);
+    const yMin = Math.floor(Math.min.apply(null, allValues) / 10) * 10;
+    const yMax = Math.ceil(Math.max.apply(null, allValues) / 10) * 10;
+    const yTickCount = 5;
+    const monthLabels = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт'];
+    const x = function (index) { return margin.left + (plotWidth * index / (trendData.months.length - 1)); };
+    const y = function (value) { return margin.top + plotHeight - ((value - yMin) / (yMax - yMin) * plotHeight); };
+
+    const svg = createSvgElement('svg', {
+      viewBox: '0 0 ' + width + ' ' + height,
+      role: 'img',
+      'aria-label': 'Динамика показателя «' + metrics[metricId].valueLabel + '» для десяти DSP-платформ, январь — октябрь 2026 года'
+    });
+
+    for (let index = 0; index <= yTickCount; index += 1) {
+      const value = yMin + ((yMax - yMin) * index / yTickCount);
+      const yPosition = y(value);
+      svg.appendChild(createSvgElement('line', {
+        x1: margin.left, y1: yPosition, x2: width - margin.right, y2: yPosition, class: 'chart-grid-line'
+      }));
+      const label = createSvgElement('text', {
+        x: margin.left - 10, y: yPosition + 4, 'text-anchor': 'end', class: 'chart-axis-label'
+      });
+      label.textContent = String(Math.round(value));
+      svg.appendChild(label);
+    }
+
+    trendData.months.forEach(function (month, index) {
+      const xPosition = x(index);
+      svg.appendChild(createSvgElement('line', {
+        x1: xPosition, y1: margin.top, x2: xPosition, y2: height - margin.bottom, class: 'chart-grid-line'
+      }));
+      const label = createSvgElement('text', {
+        x: xPosition, y: height - 18, 'text-anchor': 'middle', class: 'chart-axis-label chart-month-label'
+      });
+      label.textContent = monthLabels[index];
+      svg.appendChild(label);
+    });
+
+    svg.appendChild(createSvgElement('line', {
+      x1: margin.left, y1: height - margin.bottom, x2: width - margin.right, y2: height - margin.bottom, class: 'chart-axis-line'
+    }));
+    svg.appendChild(createSvgElement('line', {
+      x1: margin.left, y1: margin.top, x2: margin.left, y2: height - margin.bottom, class: 'chart-axis-line'
+    }));
+
+    trendData.companies.forEach(function (company) {
+      const series = getSeries(company, metricId);
+      const pathData = series.map(function (value, index) {
+        return (index === 0 ? 'M ' : 'L ') + x(index).toFixed(2) + ' ' + y(value).toFixed(2);
+      }).join(' ');
+      const seriesGroup = createSvgElement('g', {
+        class: 'chart-series',
+        'data-platform': company.name
+      });
+      if (!visibleCompanies.has(company.name)) seriesGroup.setAttribute('hidden', '');
+      seriesGroup.appendChild(createSvgElement('path', {
+        d: pathData,
+        class: 'chart-line',
+        stroke: company.color,
+        'aria-label': company.name,
+        'data-platform': company.name,
+        'data-october-value': series[series.length - 1]
+      }));
+      series.forEach(function (value, index) {
+        seriesGroup.appendChild(createSvgElement('circle', {
+          cx: x(index), cy: y(value), r: 2.8, fill: company.color, class: 'chart-point', 'aria-hidden': 'true'
+        }));
+        seriesGroup.appendChild(createSvgElement('circle', {
+          cx: x(index),
+          cy: y(value),
+          r: 11,
+          class: 'chart-point-hit',
+          'data-platform': company.name,
+          'data-month': trendData.months[index],
+          'data-metric': metricId,
+          'data-value': value,
+          'aria-describedby': chartTooltip.id
+        }));
+      });
+      svg.appendChild(seriesGroup);
+    });
+
+    chartStage.replaceChildren(svg);
+    renderLegend();
+  }
+
+  function renderLegend() {
+    const fragment = document.createDocumentFragment();
+
+    trendData.companies.forEach(function (company) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'legend-item legend-toggle';
+      button.dataset.company = company.name;
+      button.setAttribute('aria-pressed', String(visibleCompanies.has(company.name)));
+      button.style.setProperty('--legend-color', company.color);
+
+      const swatch = document.createElement('span');
+      swatch.className = 'legend-swatch';
+      swatch.setAttribute('aria-hidden', 'true');
+      button.appendChild(swatch);
+      button.appendChild(document.createTextNode(company.name));
+      fragment.appendChild(button);
+    });
+
+    const showAllButton = document.createElement('button');
+    showAllButton.type = 'button';
+    showAllButton.className = 'legend-show-all';
+    showAllButton.textContent = 'Показать все';
+    fragment.appendChild(showAllButton);
+    chartLegend.replaceChildren(fragment);
+  }
+
+  function updateChartVisibility() {
+    chartStage.querySelectorAll('.chart-series').forEach(function (seriesGroup) {
+      seriesGroup.toggleAttribute('hidden', !visibleCompanies.has(seriesGroup.dataset.platform));
+    });
+    chartLegend.querySelectorAll('.legend-toggle').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(visibleCompanies.has(button.dataset.company)));
+    });
+  }
+
+  function countCrossings(metricId) {
+    let crossings = 0;
+    for (let first = 0; first < trendData.companies.length; first += 1) {
+      for (let second = first + 1; second < trendData.companies.length; second += 1) {
+        const firstSeries = getSeries(trendData.companies[first], metricId);
+        const secondSeries = getSeries(trendData.companies[second], metricId);
+        for (let month = 1; month < trendData.months.length; month += 1) {
+          const previousDifference = firstSeries[month - 1] - secondSeries[month - 1];
+          const currentDifference = firstSeries[month] - secondSeries[month];
+          if (previousDifference * currentDifference < 0) crossings += 1;
+        }
+      }
+    }
+    return crossings;
+  }
+
+  function validateData() {
+    const expectedMonths = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь'];
+    const actualNames = trendData.companies.map(function (company) { return company.name; });
+    if (JSON.stringify(actualNames) !== JSON.stringify(EXPECTED_COMPANIES)) {
+      throw new Error('Список DSP-платформ не соответствует заданному');
+    }
+    if (JSON.stringify(trendData.months) !== JSON.stringify(expectedMonths)) {
+      throw new Error('Набор месяцев должен охватывать январь — октябрь 2026 года');
+    }
+    if (INTEGRAL_WEIGHTS.answers + INTEGRAL_WEIGHTS.sources !== 1) {
+      throw new Error('Сумма весов интегрального показателя должна быть равна 1');
+    }
+
+    trendData.companies.forEach(function (company) {
+      ['answers', 'sources'].forEach(function (metricId) {
+        const series = company.values[metricId];
+        if (!Array.isArray(series) || series.length !== expectedMonths.length) {
+          throw new Error('Некорректная длина ряда: ' + company.name + ', ' + metricId);
+        }
+        if (series.some(function (value) { return value < 0 || value > 100; })) {
+          throw new Error('Значение вне диапазона 0–100: ' + company.name + ', ' + metricId);
+        }
+      });
+    });
+
+    const crossings = {};
+    Object.keys(metrics).forEach(function (metricId) {
+      crossings[metricId] = countCrossings(metricId);
+      if (crossings[metricId] === 0) throw new Error('Нет пересечений линий: ' + metricId);
+      if (!getMetricRows(metricId).some(function (row) { return row.delta !== 0; })) {
+        throw new Error('Нет изменений позиций между сентябрём и октябрём: ' + metricId);
+      }
+    });
+    return crossings;
+  }
+
+  function renderMetric(metricId) {
+    const metric = metrics[metricId];
+    const rows = getMetricRows(metricId);
+    rankingTitle.textContent = metric.title;
+    valueHeading.textContent = metric.valueLabel;
+    rankingBody.innerHTML = rows.map(function (row, index) {
+      const value = row.value.toFixed(metric.decimals);
+      return '<tr data-platform="' + row.name + '" data-september-position="' + row.septemberPosition + '" data-october-position="' + row.octoberPosition + '" data-position-delta="' + row.delta + '">' +
+        '<td class="rank">' + (index + 1) + '</td>' +
+        '<td class="platform">' + row.name + '</td>' +
+        '<td class="total">' + value + '</td>' +
+        '<td>' + deltaMarkup(row.delta) + '</td>' +
+      '</tr>';
+    }).join('');
+
+    renderChart(metricId);
+
+    metricButtons.forEach(function (button) {
+      const isActive = button.dataset.metric === metricId;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+  }
+
+  function showView(viewId) {
+    viewButtons.forEach(function (button) {
+      const isActive = button.dataset.view === viewId;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+    viewPanels.forEach(function (panel) {
+      const isActive = panel.dataset.panel === viewId;
+      panel.hidden = !isActive;
+      panel.classList.toggle('active', isActive);
+    });
+  }
+
+  metricButtons.forEach(function (button) {
+    button.addEventListener('click', function () { renderMetric(button.dataset.metric); });
+  });
+
+  chartLegend.addEventListener('click', function (event) {
+    const toggleButton = event.target.closest('.legend-toggle');
+    if (toggleButton) {
+      const companyName = toggleButton.dataset.company;
+      if (visibleCompanies.has(companyName)) {
+        visibleCompanies.delete(companyName);
+        if (chartTooltip.dataset.platform === companyName) hideTooltip();
+      } else visibleCompanies.add(companyName);
+      updateChartVisibility();
+      return;
+    }
+
+    if (event.target.closest('.legend-show-all')) {
+      EXPECTED_COMPANIES.forEach(function (companyName) { visibleCompanies.add(companyName); });
+      updateChartVisibility();
+    }
+  });
+
+  chartStage.addEventListener('pointermove', function (event) {
+    if (event.pointerType !== 'mouse') return;
+    const point = getClosestVisiblePoint(event.clientX, event.clientY);
+    if (point) showTooltip(point);
+    else hideTooltip();
+  });
+
+  chartStage.addEventListener('pointerleave', function (event) {
+    if (event.pointerType === 'mouse') hideTooltip();
+  });
+
+  chartStage.addEventListener('pointerdown', function (event) {
+    if (event.pointerType === 'mouse') return;
+    const point = getClosestVisiblePoint(event.clientX, event.clientY);
+    if (point) showTooltip(point);
+  });
+
+  chartStage.addEventListener('touchstart', function (event) {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    const point = getClosestVisiblePoint(touch.clientX, touch.clientY);
+    if (point) showTooltip(point);
+  }, { passive: true });
+
+  document.addEventListener('pointerdown', function (event) {
+    if (!chartTooltip.hidden && !chartStage.contains(event.target)) hideTooltip();
+  });
+
+  document.addEventListener('touchstart', function (event) {
+    if (!chartTooltip.hidden && !chartStage.contains(event.target)) hideTooltip();
+  }, { passive: true });
+
+  document.querySelector('.chart-scroll').addEventListener('scroll', hideTooltip, { passive: true });
+  window.addEventListener('resize', hideTooltip);
+
+  viewButtons.forEach(function (button) {
+    button.addEventListener('click', function () { showView(button.dataset.view); });
+  });
+
+  menuButton.addEventListener('click', function () {
+    const isOpen = globalNav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+  });
+
+  globalNav.addEventListener('click', function () {
+    globalNav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Открыть меню');
+  });
+
+  const validationResult = validateData();
+  document.documentElement.dataset.dataChecks = 'passed';
+  document.documentElement.dataset.crossings = JSON.stringify(validationResult);
+  renderMetric('integral');
+}());
+
+  </script>
+</body>
+</html>
